@@ -6,7 +6,9 @@ This website is built using [Docusaurus](https://docusaurus.io/), a modern stati
 
 ```bash
 npm install
+npm install --save @docusaurus/theme-mermaid
 ```
+    
 
 **Note**: feel free to use the package manager of your choice.
 

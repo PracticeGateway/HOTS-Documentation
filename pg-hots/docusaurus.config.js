@@ -7,12 +7,12 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
-
+//v1.0
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+  title: 'Practice Gateway HOTS',
+  tagline: 'Support guides for Practice Gateway',
+  favicon: 'img/PG_Logo.png',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -20,17 +20,24 @@ const config = {
   },
 
   // Set the production url of your site here
-  url: 'https://hots.practicegateway.dev',
+  url: 'http://localhost:3000',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'T-Tech', // Usually your GitHub org/user name.
-  projectName: 'Practice Gateway', // Usually your repo name.
+  organizationName: 'facebook', // Usually your GitHub org/user name.
+  projectName: 'docusaurus', // Usually your repo name.
 
   onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
+
+
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -47,10 +54,6 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
@@ -58,10 +61,6 @@ const config = {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -74,32 +73,46 @@ const config = {
     ],
   ],
 
+  plugins: [
+    //Left
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'hots',
+        path: 'hots',
+        routeBasePath: 'hots',
+        sidebarPath: './sidebars-hots.js',
+      },
+    ]/*,
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'user-guides',
+        path: 'user-guides',
+        routeBasePath: 'user-guides',
+        sidebarPath: './sidebars-user-guides.js',
+      },
+    ],*/
+    
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
-      colorMode: {
-        respectPrefersColorScheme: true,
-      },
       navbar: {
-        title: 'My Site',
+        title: 'Practice Gateway HOTS',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          src: 'img/PG_Logo.png',
         },
         items: [
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            to: '/hots/intro',
+            label: 'HOTS',
             position: 'left',
-            label: 'Tutorial',
-          },
-          {to: '/blog', label: 'Blog', position: 'left'},
-          {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
-            position: 'right',
+            activeBaseRegex: `/hots/`,
           },
         ],
       },
@@ -110,8 +123,8 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'HOTS',
+                to: '/hots/intro',
               },
             ],
           },
@@ -119,34 +132,17 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'Practice Gateway',
+                href: 'https://www.practicegateway.com/',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
+                label: 'T-Tech',
+                href: 'https://www.ttech.uk.com/',
+              }
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © T-TECH ${new Date().getFullYear()}. All rights reserved. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
